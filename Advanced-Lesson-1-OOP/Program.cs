@@ -11,8 +11,7 @@ namespace Advanced_Lesson_1_OOP
         static void Main(string[] args)
         {
             //Lesson.AbstractionShapeExample();
-            Lesson.OverloadingExample();
-
+            Lesson.InheritanceTransportExample();
             Console.ReadKey();
         }
     }
