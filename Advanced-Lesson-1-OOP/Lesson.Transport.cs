@@ -14,13 +14,21 @@ namespace Advanced_Lesson_1_OOP
             var transport = new FuelCar() { FuelUsage = 10, Fuel = 45, Distance = 25045 };
             var transport2 = new Transport { Distance = 34, MaxSpeed = 5 };
 
-            Transport unknowedTransport = new Transport { Distance = 34, MaxSpeed = 5 };
-            unknowedTransport = new FuelCar() { FuelUsage = 10, Fuel = 45, Distance = 25045 };
+            
+            var unknowedTransport = new FuelCar() { FuelUsage = 10, Fuel = 45, Distance = 25045 };
+            var electroVehicle = new ElectroCar() { MaxSpeed = 140, Battery = 55 };
 
             FuelCar maserati = new FuelCar() { FuelUsage = 10, Fuel = 45, Distance = 25045 };
             Transport winner = maserati;
             FuelCar firstPlace = (FuelCar)winner;
-
+            transport.Engine = 350;
+            maserati.Engine = 240;
+            unknowedTransport.Engine = 168;
+            electroVehicle.Engine = 100;
+            Console.WriteLine(electroVehicle<unknowedTransport);
+            Console.WriteLine(maserati > transport);
+            Console.WriteLine(transport != electroVehicle);
+            Console.WriteLine(unknowedTransport == maserati);
         }   
     }
 
@@ -42,6 +50,22 @@ namespace Advanced_Lesson_1_OOP
     public class Car : Transport
     {
         public float Engine { get; set; }
+        public static bool operator ==(Car car, Car car2)
+        {
+            return car.Engine == car2.Engine;
+        }
+        public static bool operator !=(Car car, Car car2)
+        {
+            return car.Engine != car2.Engine;
+        }
+        public static bool operator <(Car car, Car car2)
+        {
+            return car.Engine < car2.Engine;
+        }
+        public static bool operator >(Car car, Car car2)
+        {
+            return car.Engine > car2.Engine;
+        }
     }
 
     public class FuelCar : Car
